@@ -1,0 +1,132 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, live {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+li {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+span,
+p {
+    font-family: 'Noto Sans JP', sans-serif;
+    cursor: default;
+}
+
+tr,
+td {
+    font-family: 'Noto Sans JP', sans-serif;
+    cursor: default;
+
+    p {
+        font-family: 'Noto Sans JP', sans-serif;
+        cursor: default;
+    }
+}
+
+button {
+    p {
+        cursor: pointer;
+    }
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    padding: 0px;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+select,input {
+    outline: none;
+    box-sizing: border-box;
+    border: none;
+    font-family: 'Noto Sans JP', sans-serif;
+    appearance: none;
+}
+
+main {
+    display: block;
+}
+
+html,body {
+    width: 100%;
+    height: auto;
+}
+
+i {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    // display: none;
+    // appearance: none;
+    opacity: 0;
+}
+
+img {
+    display: block;
+}
+
+//function
+@mixin media($max-width) {
+    $max-width-with-unit: #{$max-width}px;
+
+    @media screen and (max-width: #{$max-width-with-unit}) {
+        @content;
+    }
+}

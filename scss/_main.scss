@@ -1,0 +1,48 @@
+html {
+    width: 100%;
+    height: auto;
+    overflow-y: overlay;
+
+    body {
+        position: relative;
+        background: $BG_05;
+
+        &::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: $scrollBar_thumb;
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+            border-radius: 10px;
+        }
+
+        main {
+            width: 100%;
+            height: auto;
+            min-height: 866px;
+            display: flex;
+            padding: 65px 0 0 0;
+            @include media(820) {
+                // min-height: 1180px;
+                flex-direction: column;
+            }
+        }
+
+        @import "./_header.scss";
+        @import "./_footer.scss";
+        @import "./_sideMenu.scss";
+        @import "./_swiper.scss";
+        @import "./_account.scss";
+        @import "./aside";
+        @import "./popup";
+        @import "./_page_container.scss";
+        @import "./animate";
+        @import "./loadPage";
+    }
+}

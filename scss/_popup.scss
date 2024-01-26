@@ -1,0 +1,777 @@
+.filter {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background: #00000096;
+    display: none;
+
+    &.display {
+        display: block;
+    }
+
+    .closeBox {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+
+        &:hover {
+            
+            .close_svg {
+                transform: rotate(-90deg);
+
+                >path {
+                    fill: $fontColor_1;
+                }
+            }
+        }
+
+        .close_svg {
+            width: 20px;
+            height: 20px;
+            transition: all 0.3s;
+
+            >path {
+                fill: #67707b;
+            }
+        }
+    }
+
+    .popup {
+        width: 420px;
+        height: 700px;
+        background: linear-gradient(to top, #1a1b1e 0%, #2c2d33 100%);
+        border-radius: 5px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 50px 50px 0;
+        position: relative;
+        display: none;
+        z-index: 9999;
+        @include media(414) {
+            width: 90%;
+        }
+
+        &.display {
+            display: block;
+            animation: fadeToggle 0.6s linear;
+        }
+
+        .title {
+            color: $fontColor_1;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        form {
+            width: 100%;
+            height: 464px;
+
+            >p {
+                font-size: 14px;
+                letter-spacing: -1px;
+                color: $fontColor_7;
+                margin-bottom: 10px;
+            }
+
+            >label {
+                width: auto;
+                height: auto;
+                display: block;
+                margin-bottom: 25px;
+                position: relative;
+
+                input {
+                    width: 100%;
+                    height: 44px;
+                    background: $BG_sub_01;
+                    color: $fontColor_1;
+                    border: none;
+                    border-radius: 3px;
+                    padding: 0 15px;
+
+                    &::placeholder {
+                        font-size: 14px;
+                        font-weight: bold;
+                        color: #555a5f;
+                    }
+
+                    &:focus {
+                        border: solid 1px #ff0844;
+                    }
+
+                    &[type=password] {
+                        padding-right: 25px;
+                    }
+                }
+
+                .eyesBox {
+                    width: 20px;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    top: 50%;
+                    right: 10px;
+                    transform: translateY(-50%);
+                    cursor: pointer;
+
+                    >svg {
+                        width: 16px;
+                        height: 16px;
+                        display: none;
+
+                        >path {
+                            fill: #67707b;
+                        }
+
+                        &.display {
+                            display: block;
+                        }
+                    }
+
+                    &:hover,
+                    &:active,
+                    &.active {
+                        >svg {
+                            >path {
+                                fill: $fontColor_1;
+                            }
+                        }
+                    }
+                }
+            }
+
+            >div {
+                width: 100%;
+                height: auto;
+                display: flex;
+                align-items: center;
+                margin-top: 15px;
+
+                input[type=checkbox] {
+                    width: 16px;
+                    height: 16px;
+                    background: #25262b;
+                    position: relative;
+                    cursor: pointer;
+
+                    &::before {
+                        content: "";
+                        width: 4px;
+                        height: 9px;
+                        border-style: solid;
+                        border-color: red;
+                        border-width: 0 2px 2px 0;
+                        position: absolute;
+                        top: 40%;
+                        left: 50%;
+                        transform: translate(-50%, -50%) rotate(45deg);
+                        display: none;
+                    }
+
+                    &:checked {
+                        &::before {
+                            display: block;
+                        }
+                    }
+                }
+
+                p {
+                    font-size: 14px;
+                    font-weight: bold;
+                    letter-spacing: -1px;
+                    color: $fontColor_7;
+                    padding-left: 8px;
+
+                    >span {
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .btn {
+            width: 160px;
+            height: 44px;
+            background: linear-gradient(to right, #ff0844 0%, #f8501d 100%);
+            border-radius: 5px;
+            color: $fontColor_1;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 4px 0 0 #ab1313;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .textBox {
+            width: auto;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+
+            >p {
+                font-size: 14px;
+                font-weight: bold;
+                letter-spacing: -1px;
+                color: $fontColor_7;
+                margin-right: 20px;
+                cursor: pointer;
+
+                &:last-child {
+                    margin: 0;
+                }
+            }
+        }
+
+
+
+        &.register {
+            form {
+                >label {
+                    &:nth-of-type(4) {
+                        margin: 0;
+                    }
+                }
+            }
+
+            >button {
+                opacity: 0.5;
+                pointer-events: none;
+
+                &.checked {
+                    opacity: 1;
+                    pointer-events: visible;
+                }
+            }
+        }
+
+        &.forget {
+            .btnBox {
+                display: flex;
+                justify-content: center;
+
+                >.btn {
+                    width: 140px;
+                    height: 44px;
+
+                    &:nth-of-type(2) {
+                        background: #3E3E3E;
+                        box-shadow: 0 4px 0 0 #4b4949;
+                    }
+                }
+            }
+        }
+    }
+
+    .s-popup {
+        width: 464px;
+        height: auto;
+        background: linear-gradient(to top, #1b1c20 0%, #1d1e22 100%);
+        border-radius: 5px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: relative;
+        display: none;
+        z-index: 9999;
+        @include media(414) {
+            width: 90%;
+        }
+
+        &.display {
+            display: block;
+        }
+
+        .top {
+            width: 100%;
+            height: 60px;
+            background: #17181b;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+
+            p {
+                font-size: 16px;
+                font-weight: bold;
+                color: #f5f6f7;
+            }
+
+            .closeBox {
+                position: relative;
+                top: unset;
+                right: unset;
+            }
+        }
+
+        .bottom {
+            width: 100%;
+            height: 200px;
+            padding: 30px 20px;
+
+            p {
+                font-size: 14px;
+                font-weight: bold;
+                color: $fontColor_7;
+                line-height: 1.5;
+                padding-bottom: 40px;
+            }
+
+            >button {
+                width: 280px;
+                height: 48px;
+                @include btnStyle_3;
+                font-size: 14px;
+                font-weight: bold;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+.bars-popup {
+    width: 100%;
+    height: 100%;
+    background: #25262b;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9998;
+    padding: 0 20px;
+    display: none;
+
+    &.display {
+        display: block;
+    }
+
+    .first {
+        width: 100%;
+        height: 8vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include media (660) {
+            height: 15vw;
+        }
+
+        .logo {
+            width: auto;
+            height: auto;
+            cursor: pointer;
+
+            >svg{
+                width: 20vw;
+                height: 20vw;
+                object-fit: contain;
+                fill: $fontColor_1;
+                @include media(414) {
+                    width: 27vw;
+                }
+            }
+        }
+
+        .btnBox {
+            width: auto;
+            height: auto;
+            display: flex;
+            align-items: center;
+
+            .signin_btn {
+                width: 12.8vw;
+                height: 5vw;
+                background: linear-gradient(to right, #ff0844 0%, #f8501d 100%);
+                color: $fontColor_1;
+                border-radius: 5px;
+                font-size: 1.5vw;
+                font-weight: bold;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+                margin-right: 10px;
+                @include media(660) {
+                    width: 25vw;
+                    height: 9.5vw;
+                    font-size: 3vw;
+                }
+
+                >svg {
+                    width: 2vw;
+                    height: 2vw;
+                    margin-left: 6px;
+                    @include media(660) {
+                        width: 4vw;
+                        height: 4vw;
+                    }
+
+                    >path {
+                        fill: $fontColor_1;
+                    }
+                }
+            }
+
+            .close_btn {
+                width: 4.5vw;
+                height: 4.5vw;
+                background: #1d1e22;
+                border-radius: 0.2vw;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                @include media(660) {
+                    width: 10vw;
+                    height: 10vw;
+                }
+
+                >svg {
+                    width: 2vw;
+                    height: 2vw;
+                    @include media(660) {
+                        width: 4.5vw;
+                        height: 4.5vw;
+                    }
+
+                    >path {
+                        fill: $fontColor_2;
+                    }
+                }
+            }
+
+            .transfer-btn {
+                width: 48px;
+                height: 40px;
+                background: linear-gradient(to right, #ff0844 0%, #f8501d 100%);
+                color: $fontColor_1;
+                font-size: 14px;
+                font-weight: bold;
+                border-radius: 3px;
+                margin-right: 15px;
+                @include media(660) {
+                    width: 11vw;
+                    height: 9vw;
+                    font-size: 3vw;
+                }
+            }
+        }
+
+        .amount-small {
+            width: 95px;
+            height: 40px;
+            background: #1e2024;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            margin-right: 5px;
+            @include media(660) {
+                width: 18vw;
+                height: 9vw;
+                font-size: 3vw;
+                justify-content: center;
+            }
+
+            .circle-dollar {
+                width: 12px;
+                height: 12px;
+                flex-shrink: 0;
+                margin-right: 3px;
+                @include media(660) {
+                    width: 3vw;
+                    height: 3vw;
+                    margin-right: 1vw;
+                }
+
+                >path {
+                    fill: $highLight_1;
+                }
+            }
+
+            >p {
+                font-size: 14px;
+                font-weight: bold;
+                color: $fontColor_7;
+                @include media(660) {
+                    font-size: 3vw;
+                }
+
+                &.unit {
+                    margin-right: 10px;
+                }
+
+                &.number {
+                    color: $fontColor_1;
+                }
+            }
+        }
+
+
+    }
+
+    .second {
+        width: 100%;
+        height: auto;
+        padding: 5px 0 50px;
+
+        ul {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+
+            &:last-child {
+                margin: 0;
+            }
+
+            li {
+                width: 100%;
+                height: 5vw;
+                display: flex;
+                align-items: center;
+                background: #1c1c1c;
+                border-radius: 5px;
+                margin-bottom: 5px;
+                position: relative;
+                cursor: pointer;
+                @include media(660) {
+                    height: 10vw;
+                }
+
+                &:last-child {
+                    margin: 0;
+                }
+
+                &::before {
+                    content: "";
+                    width: 8px;
+                    height: 8px;
+                    border-width: 0.3vw 0.3vw 0 0;
+                    border-style: solid;
+                    border-color: $fontColor_4;
+                    position: absolute;
+                    top: 50%;
+                    right: 4vw;
+                    transform: translateY(-50%) rotate(45deg);
+                    @include media(414) {
+                        width: 2vw;
+                        height: 2vw;
+                    }
+                }
+
+                .typeBox {
+                    width: 70px;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    >svg {
+                        width: 2vw;
+                        height: 2vw;
+                        @include media(660) {
+                            width: 4vw;
+                            height: 4vw;
+                        }
+
+                        >path {
+                            fill: $fontColor_2;
+                        }
+                    }
+                }
+
+                >p {
+                    font-size: 1.8vw;
+                    font-weight: bold;
+                    color: $fontColor_4;
+                    @include media(660) {
+                        font-size: 3.6vw;
+                    }
+                }
+            }
+        }
+    }
+
+    .third {
+        width: 100%;
+        height: auto;
+        display: flex;
+
+        >button {
+            width: 50%;
+            height: 5vw;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include media(660) {
+                height: 10vw;
+                font-size: 3vw;
+            }
+
+            >svg {
+                width: 16px;
+                height: 16px;
+                margin-left: 6px;
+                @include media(660) {
+                    width: 4vw;
+                    height: 4vw;
+                }
+
+                >path {
+                    fill: $fontColor_1;
+                }
+            }
+
+            &.signup_btn {
+                background: linear-gradient(to right, #ff0844 0%, #f8501d 100%);
+                color: $fontColor_1;
+            }
+
+            &.signout_btn {
+                background: $BG_02;
+                color: $fontColor_4;
+
+                >svg {
+                    width: 19px;
+                    height: 19px;
+                    margin-left: unset;
+                    margin-right: 6px;
+
+                    >path {
+                        fill: $fontColor_2;
+                    }
+                }
+            }
+        }
+
+        .lang_btn {
+            width: 50%;
+            height: 5vw;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            background: $BG_02;
+            color: $fontColor_4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-right: 10px;
+            cursor: pointer;
+            @include media(660) {
+                height: 10vw;
+                font-size: 3vw;
+            }
+
+            .lang_box {
+                width: 20vw;
+                height: 15vw;
+                background: #31343d;
+                position: absolute;
+                top: 5vw;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 10px 0;
+                display: none;
+                @include media(660) {
+                    width: 100%;
+                    height: auto;
+                    top: 10vw;
+                }
+
+                &.display {
+                    display: block;
+                    animation: fadeToggle 0.6s linear 0s;
+                }
+
+                p {
+                    width: 100%;
+                    padding: 12px 12px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: $fontColor_1;
+                    height: auto;
+                    @include media(414) {
+                        font-size: 4vw;
+                    }
+                }
+
+                li {
+                    width: 80%;
+                    height: 36px;
+                    display: flex;
+                    align-items: center;
+                    background: transparent;
+                    font-size: 12px;
+                    font-weight: bold;
+                    border-radius: 3px;
+                    padding: 0 10px;
+                    margin: 0 auto;
+                    @include media(660) {
+                        height: 8vw;
+                        font-size: 2.5vw;
+                    }
+
+                    &.active {
+                        background: $BG_07;
+                        color: $fontColor_1;
+                    }
+                }
+            }
+
+            .angle-right_svg {
+                width: 19px;
+                height: 19px;
+                position: absolute;
+                right: 10px;
+                pointer-events: none;
+
+                >path {
+                    fill: $fontColor_2;
+                }
+
+                &.active {
+                    animation: arrow 0.5s ease-in-out 0s;
+                    transform: rotate(90deg);
+                }
+
+                &.origin {
+                    animation: arrow-back 0.5s ease-in-out 0s;
+                    transform: rotate(0deg);
+                }
+            }
+        }
+    }
+
+    .user-id {
+        width: auto;
+        height: auto;
+        font-size: 14px;
+        font-weight: bold;
+        color: $fontColor_8;
+        display: flex;
+        align-items: center;
+        padding: 15px 0;
+
+        span {
+            padding-left: 1px;
+        }
+    }
+}

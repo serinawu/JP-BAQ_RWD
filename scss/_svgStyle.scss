@@ -1,0 +1,77 @@
+svg {
+
+    //標題SVG------------------------------------------------
+
+    //進行中Icon
+    &.live_icon {
+        width: 38px;
+        height: 35px;
+        fill: $highLight_5;
+        @include media(414) {
+            width: 8vw;
+            height: 8vw;
+            margin: 0 1vw 0 0;
+        }
+    }
+
+    &.hotIc {
+        fill: $highLight_5;
+    }
+
+    //今日賽事 時鐘Icon
+    &.upcoming_title {
+        fill: $highLight_4;
+    }
+
+    //我的最愛頁標題 Icon
+    &.favorites_title {
+        width: 32px;
+        height: 32px;
+        fill: $highLight_1;
+        @include media(414) {
+            width: 8vw;
+            height: 8vw;
+        }
+    }
+
+    &.myBetsIcon {
+        fill:#41bc2c;
+    }
+
+    //推薦皇冠icon
+    &.featuredTitle_ic {
+        width: 32px;
+        height: 32px;
+        fill: #F5A623;
+        margin: 0 10px 0 0;
+        @include media(414) {
+            width: 8vw;
+            height: 8vw;
+            margin: 0 1vw 0 0;
+        }
+    }
+
+    //向下Icon
+    &.downArrow_ic {
+        width: 16px;
+        height: 16px;
+        fill: $fontColor_3;
+        transition: transform 0.3s;
+        margin: 0 0 0 5px;
+        cursor: pointer;
+    }
+
+    &.pin_ic {
+        width: 17px;
+        height: 32px;
+        fill: $fontColor_3;
+    }
+
+    &.sportIc {
+        fill: $fontColor_3;
+    }
+
+    &.live_simple {
+        fill: $highLight_0;
+    }
+}

@@ -1,0 +1,16 @@
+.page_container.eSport {
+    position: relative;
+
+    &::before {
+        content: "";
+        width: 720px;
+        height: 320px;
+        background: url('https://start26.sptpub.com/static/media/counter-strike.c6b25fff.png') no-repeat top center;
+        background-size: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0.4;
+    } 
+}

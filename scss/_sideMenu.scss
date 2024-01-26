@@ -1,0 +1,1032 @@
+// 側邊
+.sideMenu {
+    width: 320px;
+    height: auto;
+    background: $BG_01;
+
+    // 上方選單
+    .topGroup {
+        width: 100%;
+        height: 64px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: $BG_01;
+        padding: 0 8px;
+        position: relative;
+        z-index: 98;
+
+        svg {
+            width: 32px;
+            height: 32px;
+            padding: 8px;
+            cursor: pointer;
+            fill: $fontColor_3
+        }
+
+        .item {
+            display: none;
+        }
+
+        .topItem {
+
+            &:hover,&:active,&.active {
+                &>svg {
+                    fill: $highLight_0;
+                }
+            }
+        }
+    }
+
+    // 現在熱門 
+    .hotGroup {
+        width: 100%;
+        height: auto;
+        padding: 0 8px 16px;
+
+        .title {
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0 8px;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            cursor: pointer;
+
+            .hotIc {
+                width: 16px;
+                height: 16px;
+                margin-right: 10px;
+                fill: $highLight_5;
+            }
+
+            p {
+                color: $fontColor_3;
+                font-size: 11px;
+            }
+
+            .expand {
+                width: 8px;
+                height: 8px;
+                transform: rotate(-90deg);
+                margin-left: 12px;
+                fill: $BG_sub_04;
+
+                &.turn {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+
+        .hotContent {
+            width: 100%;
+            height: auto;
+
+            &.display {
+                display: none;
+            }
+
+            .hotItem {
+                width: 100%;
+                height: auto;
+                display: flex;
+                align-items: center;
+                padding: 12px 8px;
+                margin-bottom: 8px;
+                border-radius: 8px;
+                cursor: pointer;
+                background:$BG_03;
+
+                &:hover,&:active,&.active {
+                    color: $fontColor_1;
+                }
+
+                img {
+                    width: 24px;
+                    height: 24px;
+                    object-fit: contain;
+                }
+
+                .txt {
+                    width: 100%;
+                    height: auto;
+                    padding-left: 12px;
+                    line-height: 1.2;
+
+                    &:hover,&:active,&.active {
+
+                        p {
+                            color: $fontColor_1;
+                        }
+                    }
+
+                    .country {
+                        width: 100%;
+                        height: auto;
+                        display: flex;
+                        align-items: center;
+
+                        p {
+                            font-size: 10px;
+                            font-weight: bold;
+                        }
+
+                        svg {
+                            width: 8px;
+                            height: 8px;
+                        }
+                    }
+
+                    p {
+                        color: $fontColor_3;
+                        font-size: 10px;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+
+    // 全部體育項目
+    .sportGroup {
+        width: 100%;
+        height: auto;
+        padding: 0 8px;
+
+        .title {
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0 8px 8px;
+
+            .all {
+                width: 16px;
+                height: 16px;
+                margin-right: 8px;
+                fill: $fontColor_3;
+            }
+
+            p {
+                font-size: 12px;
+                font-weight: bold;
+                color: $fontColor_3;
+            }
+        }
+
+        ul {
+            width: 100%;
+            height: auto;
+
+            ol {
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin: 8px auto;
+                cursor: pointer;
+                background: transparent;
+                transition: transform 0.3s;
+                position: relative;
+                border-radius: 8px;
+
+                &:first-child {
+                    display: none;
+                }
+
+                &.display {
+                    background: $BG_03;
+                }
+
+                .item {
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    position: relative;
+                    padding: 8px;
+                    border-radius: 8px 8px 0 0;
+
+                    &.active {
+
+                        svg {
+                            fill: $highLight_0;
+                        }
+
+                        p {
+                            color: $highLight_0;
+                        }
+                    }
+                    
+                    svg {
+                        width: 32px;
+                        height: 32px;
+                    }
+
+                    p {
+                        width: 100%;
+                        color: $fontColor_1;
+                        margin-left: 15px;
+                        font-size: 14px;
+                        font-weight: bold;
+                        text-align:justify;
+                        padding-right: 33px;
+                        cursor: pointer;
+                    }
+
+                    .hot {
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        position: absolute;
+                        left: 25px;
+                        top: 6px;
+
+                        .hotIc {
+                            width: 16px;
+                            height: 16px;
+                        }
+                    }
+                }
+
+                
+                // 展開按鈕 +-
+                .buttonGroup {
+                    width: auto;
+                    height: auto;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 10px;
+
+
+                    .more {
+                        width: 24px;
+                        height: 24px;
+                        background: $BG_02;
+                        border-radius: 50%;
+                        position: relative;
+
+                        &.display {
+                            background: $highLight_0;
+
+                            &::before {
+                                content:"";
+                                display: none;
+                            }
+
+                            &::after {
+                                content:"";
+                                width: 12px;
+                                height: 1px;
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%,-50%);
+                            }
+                        }
+
+                        &::before {
+                            content:"";
+                            width: 1px;
+                            height: 12px;
+                            background: $fontColor_1;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%,-50%);
+                        }
+                        &::after {
+                            content:"";
+                            width: 12px;
+                            height: 1px;
+                            background: $fontColor_1;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%,-50%);
+                        }
+                    }
+                }
+                // 國家
+                .country {
+                    width: 100%;
+                    height: auto;
+                    padding: 0 8px;
+                    border-radius: 0 0 8px 8px;
+                    display: none;
+                    // user-select:none;
+
+                    &.display {
+                        display: block;
+                        animation: expand 0.6s linear 0s;
+                        transform-origin: top;
+
+                        @keyframes expand {
+                            0% {
+                                opacity: 0;
+                            }
+                            50% {
+                                opacity: 0.5;
+                            }
+                            100% {
+                                opacity: 1;
+                            }
+                        }
+                    }
+
+                    li {
+                        width: 100%;
+                        height: auto;
+                        display: flex;
+                        align-items: center;
+                        padding: 8px;
+                        border-top: 1px solid $border_01;
+                        cursor: pointer;
+
+                        &:hover,&.active {
+
+                            p {
+                                color: $highLight_0;
+                            }
+                        }
+
+                        img {
+                            width: 24px;
+                            height: 24px;
+                            object-fit: contain;
+                        }
+
+                        svg {
+                            width: 32px;
+                            height: 32px;
+                            fill: $fontColor_3;
+                        }
+
+                        p {
+                            color: $fontColor_1;
+                            font-size: 14px;
+                            font-weight: bold;
+                            padding-left: 8px;
+                            cursor: pointer;
+                        }
+
+                        // 電競
+                        &.esportGroup {
+                            flex-direction: column;
+
+                            .esport {
+                                width: 100%;
+                                height: auto;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                // margin-bottom: 16px;
+
+                                &:hover {
+
+                                    &>.game  {
+
+                                        svg {
+                                            fill: $highLight_0;
+                                        }
+
+                                        p  {
+                                            color: $highLight_0;
+                                        }
+                                    }
+                                    
+                                }
+
+                                .game {
+                                    width: 100%;
+                                    height: auto;
+                                    display: flex;
+                                    align-items: center;
+
+                                    svg {
+                                        width: auto;
+                                        height: 32px;
+                                        fill: $fontColor_3;
+                                    }
+
+                                    p {
+                                        font-size: 14px;
+                                        font-weight: bold;
+                                        padding-left: 8px;
+                                        cursor: pointer;
+                                    }
+                                }
+                                .downList {
+                                    width: auto;
+                                    height: auto;
+                                    margin: 0 2px;
+
+                                    &:hover {
+
+                                        svg {
+                                            fill: $highLight_0;
+                                        }
+                                    }
+
+                                    svg {
+                                        width: 8px;
+                                        height: 8px;
+                                        fill: $fontColor_3;
+                                        transform: rotate(90deg);
+                                    }
+
+                                    &.turn {
+                                        transform: rotate(-180deg);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .listGroup {
+                        width: 100%;
+                        height: auto;
+                        padding-bottom: 16px;
+                        display: none;
+
+                        &.display {
+                            display: block;
+                        }
+
+                        &>li {
+                            display: flex;
+
+                            &>p {
+                                cursor: pointer;
+                            }
+
+                            &:hover {
+
+                                p {
+                                    color: $highLight_0;
+                                }
+                            }
+                        }
+
+                        .topList {
+                            width: 100%;
+                            height: auto;
+                            display: flex;
+                            align-items: center;
+                        }
+
+                        .list {
+                            display: flex;
+                            justify-content: flex-start;
+                            padding: 16px 0 0 32px;
+                            line-height: 1.5;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .hot {
+        width: 20px;
+        height: 20px;
+        background: $BG_04;
+        border-radius: 50%;
+        position: absolute;
+        left: 25px;
+        top: 6px;
+        @include media(820) {
+            left: 50px;
+        }
+
+        &>.hotIc {
+            width: 16px;
+            height: 16px;
+            fill: $highLight_5;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 820px) {
+   
+        // 側邊
+        .sideMenu {
+            width: 100%;
+            height: 65px;
+
+            &.open {
+                height: auto;
+                transition: all 0.6s;
+            }
+
+            // 上方選單
+            .topGroup {
+                width: 100%;
+                height: 64px;
+                
+                .item {
+                    display: block;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    
+                    // 下拉
+                    .expandIc {
+                        width: 32px;
+                        height: auto;
+                        display: flex;
+                        justify-content: center;
+
+                        .expand {
+                            width: 8px;
+                            height: 8px;
+                            transform: rotate(90deg);
+
+                            &.turn {
+                                transform: rotate(-90deg);
+                            }
+                        }
+                    }
+
+                    .hot {
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        position: absolute;
+                        left: 25px;
+                        top: 5px;
+
+                        .hotIc {
+                            width: 16px;
+                            height: 16px;
+                            padding: 0;
+                            // fill: $hotSvg_1_N;
+                        }
+                    }
+                }
+                .expandItem {
+
+                    .hot {
+                        left: 20px;
+                        top: -7px;
+                    }
+                }
+            }
+
+            .hotGroup {
+                display: none;
+            }
+
+            .sportGroup {
+                padding: 0;
+                display: none;
+
+                &.display {
+                    display: block;
+                    animation: expand2 0.6s linear 0s;
+                    transform-origin: top;
+
+                    @keyframes expand2 {
+
+                        0% {
+                            transform: translateY(-100%);
+                            opacity: 0;
+                        }
+                        50% {
+                            transform: translateY(0.1%);
+                            opacity: 0.5;
+                        }
+
+                        100% {
+                            transform: translateY(0%);
+                            opacity: 1;
+                        }
+                    }
+                }
+                &.back{
+                    display: block;
+                    animation: back2 0.6s linear 0s;
+                    animation-fill-mode: forwards; 
+                    transform-origin: bottom;
+
+                    @keyframes back2 {
+
+                        0% {
+                            transform: translateY(0%);
+                        }
+                        50% {
+                            transform: translateY(0.1%);
+                        }
+
+                        100% {
+                            transform: translateY(-200%);
+                        }
+                    }
+                }
+                
+                .title {
+                    display: none;
+                }
+
+                ul {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: flex-start;
+                    justify-content: center;
+                    background: $BG_03;
+                    padding: 60px 5% 50px;
+
+                    ol {
+                        width: 100px;
+                        height: auto;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 8px auto;
+                        cursor: pointer;
+                        background: transparent;
+                        transition: transform 0.3s;
+                        position: relative;
+                        flex: initial;
+
+                        &:first-child {
+                            display: block;
+                        }
+                        &.display {
+                            background: transparent;
+                        }
+                        
+                        .item {
+                            width: 100%;
+                            height: auto;
+                            display: flex;
+                            flex-direction: column;
+
+                            &.display {
+                                background: transparent;
+                            }
+
+                            &:hover,&:active,&.active {
+
+                                svg.sportIc {
+                                    color: $highLight_0;
+                                    opacity: 1;
+                                    transition: opacity 0.3s;
+                                }
+                                p {
+                                    color: $highLight_0;
+                                    opacity: 1;
+                                    transition: opacity 0.3s;
+                                }
+                            }
+
+                            svg:not(.hotIc) {
+                                fill: $fontColor_3;
+                            }
+
+                            .sportIc {
+                                opacity: 0.7;
+                                transition: opacity 0.5s;
+                            }
+
+                            p {
+                                font-size: 12px;
+                                text-align: center;
+                                opacity: 0.7;
+                                transition: opacity 0.5s;
+                                margin-left: 0;
+                                margin-top: 8px;
+                                line-height: 1.5;
+                                padding-right: 0;
+                                cursor: pointer;
+                            }
+                            .hot {
+                                left: 50px;
+                            }
+
+                            .buttonGroup {
+                                display: none;
+                            }
+                        }
+                        .country {
+                            display: none;
+
+                            &.display {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+}
+@media only screen and (max-width: 663px) {
+
+        // 側邊
+        .sideMenu {
+
+            // 上方選單
+            .topGroup {
+
+                .item {
+
+                    &:nth-child(11) {
+                        display: none;
+                    }
+                }
+            }
+        }
+}
+@media only screen and (max-width: 615px) {
+        // 側邊
+        .sideMenu {
+
+            // 上方選單
+            .topGroup {
+                
+                .item {
+                    
+                    &:nth-child(11) {
+                        display: none;
+                    }
+                    &:nth-child(10) {
+                        display: none;
+                    }
+                }
+            }
+        }
+}
+@media only screen and (max-width: 600px) {
+        // 側邊
+        .sideMenu {
+
+            // 上方選單
+            .topGroup {
+
+                .item {
+
+                    &:nth-child(11) {
+                        display: none;
+                    }
+                    &:nth-child(10) {
+                        display: block;
+                    }
+                }
+
+                .topItem {
+                    &:nth-child(3) {
+                        display: none;
+                    }
+                }
+            }
+        }
+}
+@media only screen and (max-width: 567px) {
+        // 側邊
+        .sideMenu {
+
+            // 上方選單
+            .topGroup {
+                
+                .item {
+                    
+                    &:nth-child(11) {
+                        display: none;
+                    }
+
+                    &:nth-child(10) {
+                        display: none;
+                    }
+                }
+                .topItem {
+
+                    &:nth-child(3) {
+                        display: none;
+                    }
+                }
+            }
+        }
+}
+@media only screen and (max-width: 519px) {
+        // 側邊
+        .sideMenu {
+
+            // 上方選單
+            .topGroup {
+                
+                .item {
+                    
+                    &:nth-child(11) {
+                        display: none;
+                    }
+                    &:nth-child(10) {
+                        display: none;
+                    }
+                    &:nth-child(9) {
+                        display: none;
+                    }
+                }
+                .topItem {
+
+                    &:nth-child(3) {
+                        display: none;
+                    }
+                }
+            }
+        }
+}
+@media only screen and (max-width: 471px) {
+        // 側邊
+        .sideMenu {
+
+            // 上方選單
+            .topGroup {
+                
+                .item {
+                    
+                    &:nth-child(11) {
+                        display: none;
+                    }
+                    &:nth-child(10) {
+                        display: none;
+                    }
+                    &:nth-child(9) {
+                        display: none;
+                    }
+                    &:nth-child(8) {
+                        display: none;
+                    }
+                }
+                .topItem {
+
+                    &:nth-child(3) {
+                        display: none;
+                    }
+                }
+            }
+        }
+}
+@media only screen and (max-width: 423px) {
+        // 側邊
+        .sideMenu {
+
+            // 上方選單
+            .topGroup {
+                
+                .item {
+
+                    &:nth-child(11) {
+                        display: none;
+                    }
+                    &:nth-child(10) {
+                        display: none;
+                    }
+                    &:nth-child(9) {
+                        display: none;
+                    }
+                    &:nth-child(8) {
+                        display: none;
+                    }
+                    &:nth-child(7) {
+                        display: none;
+                    }
+                }
+                .topItem {
+
+                    &:nth-child(3) {
+                        display: none;
+                    }
+                }
+            }
+        }
+}
+@media only screen and (max-width: 375px) {
+        // 側邊
+        .sideMenu {
+
+            // 上方選單
+            .topGroup {
+                
+                .item {
+                    
+                    &:nth-child(11) {
+                        display: none;
+                    }
+                    &:nth-child(10) {
+                        display: none;
+                    }
+                    &:nth-child(9) {
+                        display: none;
+                    }
+                    &:nth-child(8) {
+                        display: none;
+                    }
+                    &:nth-child(7) {
+                        display: none;
+                    }
+                    &:nth-child(6) {
+                        display: none;
+                    }
+                }
+
+                .topItem {
+
+                    &:nth-child(3) {
+                        display: none;
+                    }
+                }
+            }
+        }
+}
+@media only screen and (max-width: 327px) {
+        // 側邊
+        .sideMenu {
+
+            // 上方選單
+            .topGroup {
+                
+                .item {
+
+                    &:nth-child(11) {
+                        display: none;
+                    }
+                    &:nth-child(10) {
+                        display: none;
+                    }
+                    &:nth-child(9) {
+                        display: none;
+                    }
+                    &:nth-child(8) {
+                        display: none;
+                    }
+                    &:nth-child(7) {
+                        display: none;
+                    }
+                    &:nth-child(6) {
+                        display: none;
+                    }
+                    &:nth-child(5) {
+                        display: none;
+                    }
+                }
+
+                .topItem {
+                    &:nth-child(3) {
+                        display: none;
+                    }
+                }
+            }
+        }
+}
+@media only screen and (max-width: 279px) {
+        // 側邊
+        .sideMenu {
+
+            // 上方選單
+            .topGroup {
+                
+                .item {
+                    
+                    &:nth-child(11) {
+                        display: none;
+                    }
+                    &:nth-child(10) {
+                        display: none;
+                    }
+                    &:nth-child(9) {
+                        display: none;
+                    }
+                    &:nth-child(8) {
+                        display: none;
+                    }
+                    &:nth-child(7) {
+                        display: none;
+                    }
+                    &:nth-child(6) {
+                        display: none;
+                    }
+                    &:nth-child(5) {
+                        display: none;
+                    }
+                    &:nth-child(4) {
+                        display: none;
+                    }
+                }
+
+                .topItem {
+                    &:nth-child(3) {
+                        display: none;
+                    }
+                }
+            }
+        }
+}

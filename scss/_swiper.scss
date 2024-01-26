@@ -1,0 +1,472 @@
+//banner
+.swiper_banner {
+    width: 100%;
+    height: 370px;
+    border-radius: 15px;
+    margin: 0 0 20px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    @include media(820) {
+        height: 34vw;
+    }
+    @include media(635) {
+        height: 34vw;
+    }
+    @include media(414) {
+        height: 50vw;
+    }
+
+    &:hover {
+        .swiper-button-prev,
+        .swiper-button-next {
+            display: flex;
+        }
+    }
+
+    .swiper-slide {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        &>.banner_text {
+            width: 100%;
+            height: 100%;
+            padding: 0 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 5;
+
+            &>p {
+                color: $fontColor_1;
+
+                &.banner {
+                    position: absolute;
+                    top: 20%;
+                    @include media(820) {
+                        top: 8%;
+                    }
+                }
+
+                &.subTitle {
+                    font-size: 12px;
+                    position: absolute;
+                    top: 30%;
+                    @include media(760) {
+                        top: 23%;
+                    }
+                    @include media(510) {
+                        width: 97%;
+                        top: 32%;
+                    }
+                    @include media(414) {
+                        width: 95%;
+                        top: 27%;
+                    }
+                }
+
+                &.info {
+                    font-size: 9px;
+                    line-height: 17px;
+                    position: absolute;
+                    bottom: 40px;
+                    @include media(700) {
+                        height: 36px;
+                        bottom: 48px;
+                        overflow: hidden;
+                    }
+                    @include media(675) {
+                        bottom: 30px;
+                    }
+                    @include media(510) {
+                        display: none;
+                    }
+                    @include media(414) {
+                        width: 96%;
+                        height: 13vw;
+                        bottom: 25px;
+                        overflow: hidden;
+                    }
+                }
+            }
+
+            .bannerButton {
+                width: 160px;
+                height: 40px;
+                position: absolute;
+                bottom: 40%;
+                @include btnStyle_2;
+                background: #950e0e; //個別調整
+                box-shadow: 0 2px 10px 0 #007fcaa3; //個別調整
+                @include media(760) {
+                    bottom: 45%;
+                }
+                 @include media(665) {
+                    bottom: 41%;
+                }
+                @include media(535) {
+                    bottom: 36%;
+                }
+                @include media(510) {
+                    bottom: 20%;
+                }
+               
+
+                &:hover,&:active,&.active {
+                    filter: brightness(0.75);
+                    transition: all 0.4s;
+                }
+            }
+        }
+        
+        &>img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
+            margin: 0 auto;
+            position: absolute;
+            z-index: 1;
+        }
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        display: none;
+        width: 30px;
+        height: 30px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        position: absolute;
+        top: 50%;
+        background: $swiperBtn;
+
+        &::after {
+            display: none;
+        }
+
+        &>i {
+            font-size: 15px;
+        }
+
+        &>svg {
+            fill: $fontColor_2;
+        }
+    }
+
+    //dot
+    .swiper-pagination-bullets {
+        width: auto;
+        height: 5px;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        position: absolute;
+        bottom: 6%;
+        left: 10px;
+
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 100%;
+            border-radius: 20px;
+            opacity: 0.5;
+            margin: 0 3px;
+            background: $swiperBtn;
+        }
+
+        .swiper-pagination-bullet-active {
+            width: 30px;
+            opacity: 1;
+        }
+    }
+}
+
+//推薦賽事
+.swiper_recommend {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px;
+    overflow: hidden;
+    position: relative;
+
+    &.draggable_hintStyle {
+
+        &::after {
+            display: block;
+        }
+
+        &.rightEnd {
+            
+            &::before {
+                display: block;
+            }
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    &::before {
+        content: "";
+        display: none;
+        width: 70px;
+        height: 100%;
+        background: linear-gradient(to right, $BG_03 0%, transparent 100%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+    }
+
+    &::after {
+        content: "";
+        display: none;
+        width: 70px;
+        height: 100%;
+        background: linear-gradient(to left, $BG_03 0%, transparent 100%);
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+    }
+    @include media(820) {
+        overflow: hidden;
+    }
+    @include media(414) {
+        overflow: auto;
+    }
+
+    .swiper_wrapper {
+        display: flex;
+        overflow-x: auto;
+
+        .swiper-slide {
+            position: relative;
+
+            &:last-child {
+                &.game_block {
+                    margin: 0 0 0 0;
+                }
+            }
+            
+            &.game_block {
+                width: 370px;
+                height: 150px;
+                border-radius: 10px;
+                padding: 5px 10px;
+                overflow: hidden;
+                margin: 0 20px 0 0;
+                position: relative;
+                
+                &>img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    filter: brightness(0.4);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 1;
+                }
+        
+                &>.titleLine {
+                    width: 100%;
+                    height: 10%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    position: relative;
+                    z-index: 5;
+        
+                    .countryTeam {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        cursor: pointer;
+        
+                        &:hover {
+                            &>svg {
+                                fill: $fontColor_1;
+                            }
+                            
+                            p,
+                            span {
+                                color: $fontColor_1;
+                            }
+                        }
+        
+                        &>svg {
+                            width: 16px;
+                            height: 16px;
+                            margin: 0 5px 0 0;
+                        }
+        
+                        &>svg,
+                        &>p {
+                            fill: $fontColor_3;
+                            color: $fontColor_3;
+                            cursor: pointer;
+                        }
+        
+                        .country {
+                            font-size: 12px;
+                            font-weight: bold;
+                            padding: 0 15px 0 0;
+                            position: relative;
+        
+                            &::before {
+                                content: "·";
+                                position: absolute;
+                                top: 50%;
+                                right: 4px;
+                                transform: translateY(-50%);
+                            }
+                        }
+        
+                        span {
+                            color: $fontColor_3;
+                            font-size: 12px;
+                            font-weight: bold;
+                        }
+                    }
+        
+                    .timeGroup {
+                        display: flex;
+                        align-items: center;
+                        flex-shrink: 0;
+        
+                        p,
+                        span {
+                            color: $fontColor_3;
+                            font-size: 12px;
+                            font-weight: bold;
+                            cursor: default;
+                        }
+        
+                        &>.date {
+                            padding: 0 8px 0 0;
+                            position: relative;
+        
+                            &::before {
+                                content: ",";
+                                position: absolute;
+                                top: 50%;
+                                right: 4px;
+                                transform: translateY(-50%);
+                            }
+                        }
+                    }
+                }
+        
+                &>.vsTeam {
+                    width: 100%;
+                    height: 90%;
+                    display: flex;
+                    justify-content: space-between;
+                    position: relative;
+                    z-index: 5;
+                    
+                    &>.teamBlock {
+                        width: 48%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-around;
+        
+                        &:nth-of-type(2){
+                            align-items: flex-end;
+                        }
+        
+                        &>p {
+                            color: $fontColor_1;
+                        }
+        
+                        .teamLogo {
+                            width: 32px;
+                            height: 32px;
+                        }
+        
+                        .teamName {
+                            font-size: 13px;
+                        }
+        
+                        &>.betPoint_Block {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            border-radius: 5px;
+                            padding: 10px;
+                            transition: transform 0.3s;
+                            cursor: pointer;
+                            background: $BG_sub_03;
+        
+                            &:hover {
+                                background: $BG_sub_04;
+                            }
+                        
+                            &.selected {
+                                background: $highLight_0;
+                        
+                                &:hover {
+                                    background: #bd1c42; //自訂
+                                }
+                            }
+        
+                            p {
+                                color: $fontColor_1;
+                                font-size: 12px;
+                                font-weight: bold;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &::-webkit-scrollbar {
+            width: 0px;
+            height: 0px;
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background:transparent;
+            // border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+            // border-radius: 10px;
+        }
+    }
+
+    .swiper-button-prev02,
+    .swiper-button-next02 {
+        display: none;
+        width: 30px;
+        height: 30px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        position: absolute;
+        top: 50%;
+        background: $swiperBtn;
+
+        &::after {
+            display: none;
+        }
+
+        &>i {
+            font-size: 15px;
+        }
+
+        &>svg {
+            fill: $fontColor_2;
+        }
+    }
+}

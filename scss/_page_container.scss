@@ -1,0 +1,1658 @@
+.page_container {
+    width: calc(100% - 320px);
+    height: auto;
+    @include media(820) {
+        width: 100%;
+    }
+
+    //常駐導覽列
+    .topNav {
+        width: 100%;
+        height: auto;
+        
+        &.spaceBetween {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            @include media(1285) {
+                flex-direction: column;
+                margin: 0 0 15px;
+            }
+        }
+
+        &>.mainList {
+            width: 100%;
+            height: auto;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            @include media(820) {
+                min-height: 6vw;
+                padding: 0 1vw;
+            }
+            @include media(510) {
+                height: 10vw;
+                padding: 0 4vw ;
+            }
+
+            &>li {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0 10px;
+                cursor: pointer;
+                @include media(820) {
+                    padding: 0 1.5vw;
+                }
+                @include media(510) {
+                    padding: 0 1vw ;
+                    margin: 0 2vw 0 0;
+
+                    &:last-child {
+                        margin: 0 0 0 0;
+                    }
+                }
+
+                &.home {
+
+                    &.active {
+            
+                        &>svg {
+                            fill: $highLight_1;
+                        }
+                    }
+                }
+            
+                &.schedule {
+            
+                    &.active {
+            
+                        &>svg {
+                            fill: $highLight_2;
+                        }
+                    }
+                }
+                
+                &.sport {
+            
+                    &.active {
+            
+                        &>svg {
+                            fill: $highLight_3;
+                        }
+                    }
+                }
+
+                &>svg {
+                    width: 15px;
+                    height: 15px;
+                    margin: 0 10px 0 0;
+                    fill: $fontColor_3;
+                    @include media(820) {
+                        width: 2vw;
+                        height: 2vw;
+                    }
+                    @include media(510) {
+                        width: 3vw;
+                        height: 3vw;
+                        margin: 0 1.5vw 0 0;
+                    }
+                }
+
+                &>p {
+                    color: $fontColor_3;
+                    font-size: 12px;
+                    font-weight: bold;
+                    letter-spacing: 1px;
+                    cursor: pointer;
+                    @include media(510) {
+                        font-size: 3.6vw;
+                        transform: scale(0.9);
+                    }
+                }
+            }
+
+        } 
+    }
+
+    //頁面層
+    .contentBlock {
+        display: none;
+        width: 100%;
+        height: auto;
+        padding: 0 20px;
+        position: relative;
+
+        &.display {
+            display: block;
+        }
+
+        //投注頁
+        &.betsFeed {
+
+            &>.dataContent {
+                display: none;
+
+                &.display {
+                    display: block;
+                }
+            }
+        }
+
+        //利用規約
+        &.policyPage {
+            width: 80%;
+            margin: 20px auto 0;
+            @include media(820) {
+                width: 90%;
+            }
+
+            p:not(.pageTitle) {
+                color: $fontColor_1;
+                font-size: 16px;
+                @include media(414) {
+                    font-size: 3.8vw;
+                }
+
+                &.info {
+                    line-height: 30px;
+                }
+            }
+
+            &>.rule {
+                list-style: decimal;
+                padding: 0 0 0 20px;
+                margin: 20px 0 0;
+
+                li {
+                    margin: 0 0 50px;
+
+                    &::marker {
+                        color: $fontColor_1;
+                    }
+
+                    .ruleTitle {
+                        margin: 0 0 20px;
+                    }
+
+                    .paragraph {
+                        line-height: 30px;
+                    }
+                }
+            }
+        }
+
+        //會員頁
+        &.memberPage {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px 0 0;
+        }
+
+        //資料顯示區
+        .dataContent {
+            width: 100%;
+            height: auto;
+
+            //類別層(ex:推薦遊戲/今日賽程)
+            .typeBlock {  
+                width: 100%;
+                height: auto;
+                margin: 0 0 20px;
+
+                &:last-of-type {
+                    margin: 0 0 10px;
+                }
+
+                &.hotType {
+                    display: none;
+                    @include media(820) {
+                        display: block;
+                    }
+                }
+
+                //外層模式
+                &.outerMode {
+                    display: none;
+
+                    &.display {
+                        display: block;
+                    }
+                }
+
+                //搜尋頁_大搜尋
+                .bigSearch {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    overflow: hidden;
+
+                    &.searching {
+
+                        &::before {
+                            display: block;
+                        }
+                    }
+
+                    &::before {
+                        content: "";
+                        display: none;
+                        max-width: calc(100% - 50px);
+                        height: 2px;
+                        background: $highLight_0;
+                        position: absolute;
+                        bottom:20px;
+                        left: 0;
+                        transition: all 0.3s;
+                        animation: searchLoad 5s 0.1s ease-in-out infinite;
+
+                        @keyframes searchLoad {
+                            0% {
+                                width: 30%;
+                                left: -100%;
+                            }
+                            100% {
+                                width: calc(100% - 50px);
+                                left: 0%;
+                            }
+                        }
+                    }
+                    
+                    &>input {
+                        @include searchBar;
+                        width: 100%;
+                        height: 48px;
+                        font-size: 22px;
+                        margin: 20px 0;
+                    }
+                
+                    button {
+                        width: 40px;
+                        height: 48px;
+                        flex-shrink: 0;
+                        background: transparent;
+                        color: $fontColor_3;
+                        font-size: 12px;
+                        white-space: nowrap;
+                        margin: 0 0 0 10px;
+                    }
+                
+                    &>svg {
+                        display: none;
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 50px;
+                        background: $BG_sub_01;
+                        fill: $fontColor_1;
+                        padding: 5px;
+                        position: absolute;
+                        top: 50%;
+                        right: 75px;
+                        transform: translateY(-50%);
+                        cursor: pointer;
+                    }
+                }
+
+                //liveBlock直播遊戲欄
+                .liveBlock {
+                    width: 100%;
+                    height: auto; 
+                    display: grid;
+                    grid-template-columns: 70% 30%;
+                    grid-template-rows: 8% 92%;
+                    border-radius: 10px;
+                    margin: 0 0 20px;
+                    overflow: hidden;
+                    position: relative;
+                    @include media(1280) {
+                        grid-template-columns: 100%;
+                        grid-template-rows: unset;
+                    }
+                    
+                    .eventName {
+                        width: 100%;
+                        height: auto;
+                        display: flex;
+                        align-items: center;
+                        background: $BG_03;
+                        border-bottom: 1px solid $border_01;
+                        padding: 10px;
+                        @include media(1280) {
+                            border-bottom: none;
+                        }
+            
+                        .countryTeam {
+                            width: 100%;
+                            height: auto;
+                            display: flex;
+                            align-items: center;
+                            
+                            cursor: pointer;
+    
+                            &:hover {
+                                svg {
+                                    fill: $fontColor_1;
+                                }
+    
+                                p,
+                                span {
+                                    color: $fontColor_1;
+                                }
+                            }
+    
+                            &>svg,
+                            &>p,
+                            &>span {
+                                font-size: 12px;
+                                font-weight: bold;
+                                color: $fontColor_3;
+                                cursor: pointer;
+                            }
+    
+                            &>svg {
+                                width: 16px;
+                                height: 16px;
+                                flex-shrink: 0;
+                                fill: $fontColor_3;
+                                margin: 0 5px 0 0;
+                            }
+
+                            .country {
+                                flex-shrink: 0;
+                                padding: 0 15px 0 0;
+                                position: relative;
+        
+                                &::before {
+                                    content: "·";
+                                    position: absolute;
+                                    top: 50%;
+                                    right: 4px;
+                                    transform: translateY(-50%);
+                                }
+                            }
+        
+                            .union {
+                                width: 100%;
+                                max-width: 100%;
+                                padding: 0 10px 0 0;
+                                @include textHidden;
+                            }
+                        }
+                    }
+
+                    .detailBlock {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        background: $BG_03;
+                        border-left: 1px solid $border_01;
+                        grid-row-start: span 2;
+                        @include media(1280) {
+                            border-left: none;
+                        }
+
+                        .gameDetail {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            padding: 8px;
+
+                            .game_block {
+                                max-width: 115px;
+                                display: flex;
+                                flex-direction: column;
+                                padding: 8px;
+                                background: $BG_06;
+                                border-radius: 5px;
+
+                                .state {
+                                    width: 100%;
+                                    display: flex;
+                                    align-items: flex-start;
+                                    margin: 0 0 5px;
+
+                                    svg {
+                                        width: 15px;
+                                        height: 15px;
+                                        flex-shrink: 0;
+                                    }
+
+                                    p {
+                                        max-width: 100%;
+                                        color: $highLight_4;
+                                        font-size: 12px;
+                                        font-weight: bold;
+                                        margin-left: 5px;
+                                        @include textHidden;
+                                    }
+                                }
+
+                                &>.teamName {
+                                    max-width: 100%;
+                                    color: $fontColor_1;
+                                    font-size: 12px;
+                                    font-weight: bold;
+                                    margin: 0 0 5px;
+                                    @include textHidden;
+
+                                    &:last-of-type {
+                                        margin: 0;
+                                    }
+        
+                                    .point {
+                                        flex-shrink: 0;
+                                        color: $fontColor_4;
+                                        margin: 0 5px 0 0;
+                                    }
+                                }
+                            }
+                        }
+
+                        .vsBlock {
+                            width: 96%;
+                            height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 5px;
+                            padding: 20px;
+                            margin: 0 auto 10px;
+                            overflow: hidden;
+                            position: relative;
+                            cursor: pointer;
+                            @include media(1280) {
+                                width: 98%;
+                                height: 125px;
+                                margin: 263px auto 0;
+                            }
+
+                            &::before {
+                                content: "";
+                                width: 100%;
+                                height: 100%;
+                                background: linear-gradient( to bottom, $highLight_0 0%, transparent 100%);
+                                opacity: 0.1;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                z-index: 1;
+                            }
+
+                            &::after {
+                                content: "";
+                                width: 100%;
+                                height: 1px;
+                                background: radial-gradient($highLight_0, transparent);
+                                opacity: 0.6;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                z-index: 1;
+                            }
+
+                            .teamLine {
+                                width: 100%;
+                                display: flex;
+                                align-items: center;
+                                position: relative;
+                                z-index: 5;
+
+                                .teamLogo {
+                                    width: 100%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+                                    @include media(1280) {
+                                        
+                                        &:nth-of-type(1) {
+                                            justify-content: flex-end;
+
+                                            &>.point {
+                                                margin: 0 0 0 30px;
+                                            }
+                                        }
+
+                                        &:nth-of-type(2) {
+                                            justify-content: flex-start;
+
+                                            &>.point {
+                                                margin: 0 30px 0 0;
+                                            }
+                                        }
+                                    }
+
+                                    img {
+                                        width: 50px;
+                                        height: 50px;
+                                    }
+
+                                    svg {
+                                        width: 50px;
+                                        height: 50px;
+                                        background: linear-gradient(to bottom, $BG_sub_01 0% , transparent 100%);
+                                        border-radius: 50px;
+                                        fill: $fontColor_5;
+                                    }
+
+                                    .point {
+                                        width: 30px;
+                                        height: 40px;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        background: $BG_01;
+                                        border-radius: 5px;
+                                        border: 1px solid $border_01;
+                                        color: $fontColor_1;
+                                        font-size: 16px;
+                                        font-weight: bold;
+                                    }
+                                }
+
+                                &>p {
+                                    flex-shrink: 0;
+                                    color: $fontColor_3;
+                                    margin: 0 10px;
+                                }
+                            }
+
+                            &>.teamName {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                color: $fontColor_1;
+                                font-size: 14px;
+                                font-weight: bold;
+                                margin: 10px 0 0;
+
+                                &>.team {
+
+                                    &:first-child {
+                                        padding: 0 10px 0 0;
+                                        margin: 0 5px 0 0 ;
+                                        position: relative;
+
+                                        &::before {
+                                            content: "-";
+                                            position: absolute;
+                                            right: 0;
+                                        }
+                                    }
+                                }
+                            }
+
+                            &>.enterGame {
+                                color: $fontColor_1;
+                                font-size: 12px;
+                                font-weight: bold;
+                                margin: 30px 0 0;
+                                position: relative;
+                                @include media(1280) {
+                                    display: none;
+                                }
+
+                                &::before {
+                                    content: "";
+                                    width: 0;
+                                    height: 0;
+                                    border-style: solid;
+                                    border-width: 5px 0 5px 8.6px;
+                                    border-color: transparent transparent transparent $fontColor_1;
+                                    position: absolute;
+                                    top: 50%;
+                                    right: -15px;
+                                    transform: translateY(-50%);
+                                }
+                            }
+                        }
+
+                        .betWrap {
+                            width: 100%;
+                            flex-shrink: 0;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            padding: 8px;
+
+                            &>.betPoint_Block {
+                                @include block_1;
+                                width: 48%;
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                justify-content: space-between;
+                                padding: 10px;
+                                border-radius: 5px;
+                                @include media(1280) {
+                                    width: 49.5%;
+                                }
+
+                                &.disabled {
+                                    opacity: 0.3;
+                                    cursor: default;
+        
+                                    &>p,
+                                    &>span {
+                                        cursor: default;
+                                    }
+                                }
+        
+                                &.nonBet {
+                                    position: relative;
+        
+                                    &::before {
+                                        content: "X";
+                                        display: block;
+                                        width: 100%;
+                                        height: 100%;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        font-size: 20px;
+                                        color: #fff;
+                                        font-weight: bold;
+                                        background: #111415;
+                                        position: absolute;
+                                        top: 50%;
+                                        right: 50%;
+                                        transform: translate(-50%,-50%);
+                                    }
+                                }
+                                
+                                &>p {
+                                    margin: 0;
+                                    
+                                    &.sort {
+                                        margin: 0;
+                                        text-align: left;
+                                    }
+                                }
+                            }
+
+                            //無可用狀態
+                            &>.noMarket_state {
+                                width: 100%;
+                                height: 50px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                background: $BG_01;
+                                border-radius: 5px;
+                                margin: 40px 0 0 ;
+
+                                @include media(414) {
+                                    height: 10vw;
+                                }
+
+                                &>p {
+                                    color: $fontColor_3;
+                                    font-size: 12px;
+                                    font-weight: bold;
+                                    white-space: nowrap;
+
+                                    @include media(414) {
+                                        font-size: 3.6vw;
+                                        transform: scale(0.9);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    video {
+                        width: 100%;
+                        height: 100%;
+                        @include media(1280) {
+                            height: 250px;
+                            position: absolute;
+                            top: 121px;
+                        }
+                    }
+                }
+            }
+
+            //內層模式_賽事投注詳細資料頁
+            .innerMode_Detail {
+                display: none;
+                width: 100%;
+                height: auto;
+
+                &.display {
+                    display: block;
+                }
+
+                //篩選器
+                .filterBlock {
+                    width: 100%;
+                    height: 60px;
+                    display: flex;
+                    align-items: center;
+                    margin: 15px 0 15px;
+
+                    &>.preset_popular {
+                        width: 40px;
+                        height: 100%;
+                        justify-content: center;
+
+                        &>.selectCountry {
+                            border-radius: 10px;
+
+                            &>ul {
+
+                                &.forInnerSelector {
+                                    top: 70px;
+                                }
+                            }
+                        }
+                    }
+
+                    &>ol {
+                        width: 100%;
+                        height: 100%;
+                        background: $BG_02;
+                        margin: 0 0 0 0 !important;
+                        padding: 5px 0 5px 10px;
+
+                        &>.session_Block {
+                            width: auto;
+                            height: 100%;
+                            flex-direction: column;
+                            align-items: unset;
+                            border-radius: 5px;
+                            padding: 10px;
+                            opacity: 0.6;
+                            transition: all 0.3s;
+                            cursor: pointer;
+
+                            &:hover,&:active,&.active {
+                                opacity: 1;
+                            }
+                               
+                            &>.time {
+                                display: flex;
+                                align-items: center;
+
+                                &>p,
+                                &>span {
+                                    color: $fontColor_3;
+                                    font-weight: normal;
+                                }
+
+                                .value {
+                                    font-size: 12px;
+                                }
+                            }
+
+                            p {
+                                font-size: 12px;
+
+                                &.teamName {
+                                    margin: 5px 0 0 ;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                //賽事投注資訊
+                .gameBet_details {
+                    width: 100%;
+                    height: auto;
+                    display: grid;
+                    grid-template-rows: 290px;
+                    grid-template-columns: calc(100% - 340px) 340px;
+                    @include media(1600) {
+                        grid-template-rows: 421px;
+                    }
+                    @include media(1230) {
+                        display: flex;
+                        flex-direction: column;
+                        grid-template-rows: unset;
+                    }
+
+                    .gameBasic_Block {
+                        width: 100%;
+                        height: fit-content;
+                        flex-direction: column;
+                        background: $BG_03;
+                        border-radius: 5px;
+                        padding: 10px 20px;
+                        margin: 0 0 10px;
+
+                        &.live_state {
+                            
+                            .pointTableWrap {
+                                display: flex;
+                                @include media(1600) {
+                                    flex-direction: column;
+                                }
+                            }
+                        }
+
+                        &.favorites {
+
+                            .functionBlock {
+
+                                &>.addFavorite {
+                                    fill: $highLight_1;
+                                }
+                            }
+                        }
+
+                        .topWrap {
+                            width: 100%;
+                            height: 30px;
+                            display: flex;
+                            @include media(414) {
+                                height: 8vw;
+                            }
+
+                            &>div {
+                                display: flex;
+                                align-items: center;
+                                padding: 0 10px;
+                                @include media(414) {
+                                    padding: 0 1vw;
+                                }   
+
+                                &.countryTeam {
+                                    width: 100%;
+                                    padding: 0;
+                                    cursor: pointer;
+
+                                    &:hover {
+
+                                        &>svg {
+                                            fill: $fontColor_1;
+                                        }
+
+                                        &>p,
+                                        &>span {
+                                            color: $fontColor_1;
+                                        }
+                                    }
+
+                                    &>svg {
+                                        flex-shrink: 0;
+                                        margin: 0 5px 0 0;
+                                        @include media(414) {
+                                            margin: 0 0.5vw 0;
+                                        }
+                                    }
+
+                                    &>p,
+                                    &>span {
+                                        color: $fontColor_3;
+                                        font-size: 12px;
+                                        font-weight: bold;
+                                        cursor: pointer;
+                                        @include media(414) {
+                                            font-size: 3.6vw;
+                                            transform: scale(0.9);
+                                        }
+                                    }
+                                }
+
+                                &.functionBlock {
+                                    width: auto;
+                                    display: flex;
+                                    justify-content: space-around;
+                                    flex-shrink: 0;
+                                    padding: 0;
+                                    position: relative;
+
+                                    &>svg {
+
+                                        &:hover {
+                                            fill: $fontColor_1;
+                                        }
+                                    }
+                                }
+
+                                svg {
+                                    width: 16px;
+                                    height: 16px;
+                                    fill: $fontColor_3;
+                                    cursor: pointer;
+                                    @include media(414) {
+                                        width: 4vw;
+                                        height: 4vw;
+                                    }
+                                }
+                            }
+                        }
+
+                        .downWrap {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            padding: 10px 0 10px;
+
+                            &>.teamBlock {
+                                display: flex;
+                                flex-direction: column;
+
+                                &:last-of-type {
+                                    align-items: flex-end;
+
+                                    &>p {
+                                        text-align: end;
+                                    }
+                                }
+
+                                &>img {
+                                    width: 40px;
+                                    height: 40px;
+                                    margin: 0 0 10px;
+                                }
+
+                                &>p {
+                                    color: $fontColor_1;
+                                    font-size: 14px;
+                                    @include media(414) {
+                                        white-space: unset;
+                                        font-size: 3.6vw;
+                                    }
+                                }
+                            }
+
+                            &>.current_stateBlock {
+                                width: auto;
+                                margin: 0 10px;
+                                @include media(414) {
+                                    margin: 0 1vw;
+                                }
+
+                                &>.notNow {
+                                    display: none;
+
+                                    &.display {
+                                        display: block;
+                                    }
+
+                                    &>.date {
+                                        color: $fontColor_3;
+                                        font-size: 12px;
+                                        font-weight: bold;
+                                        text-align: center;
+                                        margin: 0 0 10px;
+                                    }
+
+                                    &>.time {
+                                        color: $fontColor_1;
+                                        font-size: 13px;
+                                        letter-spacing: 1px;
+                                        font-weight: bold;
+                                        text-align: center;
+                                    }
+                                }
+
+                                &>.playingWrap {
+                                    
+                                    &>div {
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        margin: 0 0 15px;
+
+                                        &>svg {
+                                            width: 16px;
+                                            height: 16px;
+                                            @include media(414) {
+                                                width: 4vw;
+                                                height: 4vw;
+                                            }
+                                        }
+
+                                        &>p {
+                                            color: $highLight_4;
+                                            font-size: 12px;
+                                            @include media(414) {
+                                                font-size: 3.6vw;
+                                            }
+                                        }
+
+                                        &.pointWrap {
+
+                                            &>span {
+
+                                                &:nth-of-type(2) {
+                                                    color: $fontColor_4;
+                                                    font-size: 14px;
+                                                    margin: 0 10px;
+                                                    @include media(414) {
+                                                        font-size: 3.6vw;
+                                                    }
+                                                }
+
+                                                &:not(:nth-of-type(2)) {
+                                                    background: $BG_sub_01;
+                                                    border-radius: 5px;
+                                                    color: $fontColor_1;
+                                                    font-size: 15px;
+                                                    font-weight: bold;
+                                                    padding: 5px 10px;
+                                                    border: 2px solid $border_01;
+                                                    @include media(414) {
+                                                        font-size: 3.6vw;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .pointTableWrap {
+                            display: none;
+                            width: 100%;
+                            // height: 115px;
+                            border-top: 1px solid $border_01;
+                            padding: 20px 0 10px 0;
+
+                            &>.tableBlock {
+                                width: 100%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            
+                                table {
+                                    width: auto;
+
+                                    tr {
+
+                                        th {
+                                            height: 30px;
+                                            vertical-align: middle;
+                                            
+                                           p {
+                                            color: $fontColor_2;
+                                           }
+                                        }
+
+                                        td {
+                                            height: 30px;
+                                            vertical-align: middle;
+
+                                            &>div {
+                                                height: 100%;
+                                                display: flex;
+
+                                                .teamLogo {
+                                                    width: 30px;
+                                                    height: 30px;
+                                                    margin: auto;
+                                                }
+                                            }
+
+                                            p {
+                                                color: $fontColor_1;
+                                            }
+                                        }
+
+                                        p {
+                                            font-size: 13px;
+                                            font-weight: bold;
+                                            text-align: center;
+                                            padding: 0 10px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            &>.group {
+                                width: 40%;
+                                display: flex;
+                                flex-shrink: 0;
+                                @include media(1600) {
+                                    width: 100%;
+                                    justify-content: space-around;
+                                    padding: 20px 0 0;
+                                    margin: 20px 0 0;
+                                    border-top: 1px solid $border_01;
+                                }
+
+                                &>.place {
+                                    width: 30%;
+                                    padding: 0 20px;
+                                    border-left: 1px solid $border_01;
+                                    @include media(1600) {
+                                        width: auto;
+                                        border-left: none;
+                                    }
+
+                                    &>.itemName {
+                                        text-align: center;
+                                        margin: 0 0 30px;
+                                    }
+                                
+                                    &>.mark {
+                                        width: 55px;
+                                        height: 55px;
+                                        display: grid;
+                                        grid-template-columns: repeat(2, 1fr);
+                                        gap: 5px;
+                                        margin: 0 auto;
+                                        transform: rotate(45deg);
+
+                                        &>li {
+                                            width: 100%;
+                                            height: 25px;
+                                            border: 1px solid $border_02;
+
+                                            &.active {
+                                                background: $highLight_1;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                &>.record {
+                                    width: 70%;
+                                    padding: 0 20px;
+                                    border-left: 1px solid $border_01;
+                                    @include media(1600) {
+                                        width: auto;
+                                    }
+
+                                    &>li {
+                                        display: flex;
+                                        align-items: center;
+                                        margin: 0 0 30px;
+                                        @include media(414) {
+                                            margin: 0 0 4vw;
+                                        }
+
+                                        &:last-of-type {
+                                            margin: 0 0 0;
+                                        }
+
+                                        &>.itemName {
+                                            width: 65px;
+                                            margin: 0 20px 0 0;
+                                            @include media(414) {
+                                                width: 15vw;
+                                                margin: 0 4vw 0 0;
+                                            }
+                                        }
+
+                                        &>span {
+                                            width: 18px;
+                                            height: 18px;
+                                            border-radius: 50px;
+                                            border: 2px solid $border_02;
+                                            margin: 0 20px 0 0;
+
+                                            &.active {
+                                                background: $highLight_1;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .itemName {
+                                    color: $fontColor_2;
+                                    font-size: 13px;
+                                    font-weight: bold;
+                                }
+                            }
+                        }
+                    }
+
+                    .side_iFrame {
+                        width: fit-content;
+                        min-width: 320px;
+                        height: fit-content;
+                        display: flex;
+                        flex-direction: column;
+                        background: $BG_02;
+                        border-radius: 5px 5px 0 0;
+                        margin: 0 0 0 20px;
+                        @include media(1230) {
+                            width: 100%;
+                            margin: 0 0 0 0;
+                        }
+
+                        &>.topArea {
+                            width: 99%;
+                            height: 32px;
+                            flex-shrink: 0;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: $BG_03;
+                            margin: 5px auto 0;
+
+                            &>svg {
+                                width: 16px;
+                                height: 16px;
+                                margin: 0 10px 0 0;
+                            }
+
+                            &>p {
+                                color: $fontColor_1;
+                                font-size: 12px;
+                                font-weight: bold;
+                            }
+                        }
+
+                        &>.iFrame_block {
+                            width: 100%;
+                            height: auto;
+                            @include media(1230) {
+                                height: 100%;
+                            }
+
+                            &>img {
+                                width: 100%;
+                                @include media(1230) {
+                                    height: 300px;
+                                    object-fit: contain;
+                                }
+                            }
+                        }
+                    }
+
+                    .mainContent {
+                        width: 100%;
+
+                        &>.filterBlock {
+
+                            &>li {
+                                background: transparent;
+                                padding: 0 10px;
+
+                                &>p {
+                                    color: $fontColor_3;
+                                }
+
+                                &>.amount{
+                                    background: $BG_sub_02;
+                                    color: $fontColor_6;
+                                    padding: 2px 8px 3px;
+                                }
+
+                                &:hover {
+
+                                    &>p {
+                                        filter: brightness(3);
+                                    }
+                                }
+
+                                &.active {
+                                    background: $BG_03;
+
+                                    &>p {
+                                        filter: brightness(3);
+                                    }
+                                }
+                            }
+                        }
+
+                        &>.gameEvent_list {
+
+                            &.addPin {
+
+                               &>.titleWrap {
+                                &.innerTitle {
+
+                                    &>svg {
+
+                                        &.pin_ic {
+                                            fill: $highLight_5;
+                                        }
+                                    }
+                                    
+                                }
+                               }
+                              
+                            }
+
+                            &>ul {
+                                    
+                                &>.autoRaitoBlock {
+                                    background: transparent;
+                                    padding: 10px 0;
+
+                                    &>.betSelect_Block {
+                                        display: grid;
+                                        grid-template-columns: repeat(2, 1fr);
+                                        gap: 10px;
+
+                                        &.three {
+                                            grid-template-columns: repeat(3,1fr);
+                                        }
+                                        
+                                        .betPoint_Block {
+                                            width: 100%;
+                                            background: $BG_sub_05;
+    
+                                            &:hover {
+    
+                                                &>.betItem_name {
+                                                    color: $fontColor_4;
+                                                }
+                                            }
+    
+                                            &.selected {
+                                                background: $highLight_0;
+    
+                                                &:hover {
+                                                    background: #bd1c42; //自訂
+                                                
+                                                    &>.betItem_name {
+                                                        filter: brightness(4);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+             //賽事列表 (不同球種)
+            .gameEvent_list {
+                display: none;
+                width: 100%;
+                height: auto;
+
+                &.display {
+                    display: block;
+                }
+
+                //可收縮賽事
+                &.extendable {
+                    height: 43px;
+                    overflow: hidden;
+                    transition: height 3000s ease-in-out;
+
+                    &.active {
+                        height: auto;
+
+                        &>.titleWrap {
+
+                            .downArrow_ic {
+                                transform: rotate(180deg);
+                            }
+                        }
+                    }
+
+                    &>.titleWrap {
+                        display: flex;
+                        align-items: center;
+                        cursor: pointer;
+
+                        &.innerTitle {
+                            width: 100%;
+                            margin: 0 0 10px;
+                            position: relative;
+
+                            &>p {
+                                font-size: 14px;
+                                font-weight: lighter;
+                            }
+
+                            &>.pin_ic {
+                                position: absolute;
+                                top: 43%;
+                                right: 0;
+                                transform: translateY(-50%);
+                            }
+                        }
+
+                        &>p {
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                //賽局樣式
+                .eventBlock {
+
+                    &.favorites {
+
+                        .functionBlock {
+
+                            .svg {
+                            
+                                &.addFavorite {
+                                    fill: #EDB31D !important;
+                                    filter: brightness(1);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                //
+                .autoRaitoBlock {
+                    width: 100%;
+                    height: auto;
+                    background: $BG_03;
+                    border-radius: 15px;
+                    padding: 10px;
+                    margin: 0 0 10px;
+
+                    &>.topArea {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        margin: 0 0 20px 0;
+
+                        &>svg {
+                            width: 32px;
+                            height: 32px;
+                            flex-shrink: 0;
+                            fill: $fontColor_3;
+                            margin:  0 10px 0 0;
+                        }
+
+                        &>.event_detail {
+                            width: 100%;
+
+                            P {
+                                font-weight: bold;
+
+                                &.date {
+                                    color: $fontColor_3;
+                                    font-size: 14px;
+                                    margin: 0 0 10px;
+                                }
+
+                                &.teamName {
+                                    width: 100%;
+                                    max-width: 100%;
+                                    color: $fontColor_1;
+                                    font-size: 16px;
+                                    @include textHidden;
+                                    @include media(1065) {
+                                        max-width: 95%;
+                                    }
+                                    @include media(1010) {
+                                        max-width: 92%;
+                                    }
+                                    @include media(414) {
+                                        max-width: 87%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &>.betSelect_Block {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        overflow: hidden;
+
+                        &.three {
+                            display: grid;
+                            grid-template-columns: repeat(3,1fr);
+                            gap: 10px;
+                            padding: 0 0 10px;
+                            @include media(1010) {
+                                grid-template-columns: repeat(3, 32%);
+                            }
+                            @include media(414) {
+                                grid-template-columns: repeat(3, 31%);
+                            }
+
+                            &>.betPoint_Block {
+                                width: 100%
+                            }
+                        }
+
+                        &.more {
+                            height: 120px;
+
+                            &.active {
+                                height: auto;
+                            }
+                        }
+
+                        &>.betPoint_Block {
+                            @include block_1;
+                            width: 49.5%;
+                            height: 30px;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: space-between;
+                            border-radius: 5px;
+
+                            &.disabled {
+                                opacity: 0.3;
+                                cursor: default;
+                            
+                                &>p,
+                                &>span {
+                                    cursor: default;
+                                }
+                            }
+
+                            &>p {
+                                text-align: unset !important;
+
+                                &:first-of-type {
+                                    margin: 0;
+                                    @include media(414) {
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &>.toggle_switchBtn {
+                        width: 100%;
+                        height: 30px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background: $BG_01;
+                        border-radius: 5px;
+                        border-width: 0 0 30px;
+                        border: $BG_01;
+
+                        &:hover {
+
+                            &>p {
+                                color: $fontColor_1;
+                            }
+
+                            &>svg {
+                                fill: $fontColor_1;
+                            }
+                        }
+
+                        &>p {
+                            color: $fontColor_3;
+                            font-size: 12px;
+                            font-weight: bold;
+                            letter-spacing: 1px;
+                            transition: all 0.3s;
+                            cursor: pointer;
+                        }
+
+                        &>svg {
+                            width: 16px;
+                            height: 16px;
+                            fill: $fontColor_3;
+                            margin: 1px 0 0 0;
+                            transition: all 0.3s;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                //人氣賽事 (小於平板820 顯示在index/home)
+                .hotItem {
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    align-items: center;
+                    padding: 12px 8px;
+                    margin-bottom: 8px;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    background:$BG_03;
+    
+                    &:hover,&:active,&.active {
+                        color: $fontColor_1;
+                    }
+    
+                    img {
+                        width: 24px;
+                        height: 24px;
+                        object-fit: contain;
+                    }
+    
+                    .txt {
+                        width: 100%;
+                        height: auto;
+                        padding-left: 12px;
+                        line-height: 1.2;
+    
+                        &:hover,&:active,&.active {
+    
+                            p {
+                                color: $fontColor_1;
+                            }
+                        }
+    
+                        .country {
+                            width: 100%;
+                            height: auto;
+                            display: flex;
+                            align-items: center;
+    
+                            p {
+                                font-size: 10px;
+                                font-weight: bold;
+                            }
+    
+                            svg {
+                                width: 8px;
+                                height: 8px;
+                            }
+                        }
+    
+                        p {
+                            color: $fontColor_3;
+                            font-size: 10px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

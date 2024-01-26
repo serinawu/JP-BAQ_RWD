@@ -1,0 +1,1010 @@
+aside {
+    width: auto;
+    height: auto;
+
+    .bet {
+        width: 320px;
+        height: auto;
+        background: $highLight_0;
+        border-radius: 10px 10px 0 0;
+        // overflow: hidden;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        z-index: 99;
+
+        @include media(820) {
+            display: none;
+        }
+
+        .title {
+            width: 100%;
+            height: 56px;
+            border-radius: 5px 5px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: $highLight_0;
+            padding: 0 15px;
+
+            cursor: pointer;
+
+            &>div {
+                width: auto;
+                height: 100%;
+                display: flex;
+                align-items: center;
+
+                .order_svg {
+                    width: 32px;
+                    height: 32px;
+                    margin-right: 5px;
+
+                    >path {
+                        fill: $fontColor_1;
+                    }
+                }
+
+                >p {
+                    color: $fontColor_1;
+                    font-weight: bold;
+
+                    &.bet-slip {
+                        max-width: 80px;
+                        font-size: 16px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+
+                    &.quick {
+                        font-size: 12px;
+                        font-weight: bold;
+                        margin-right: 10px;
+                    }
+                }
+
+                .notice {
+                    width: 22px;
+                    height: 22px;
+                    border-radius: 50px;
+                    background: $BG_04;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    display: none;
+                    position: relative;
+
+                    &.display {
+                        display: flex;
+                    }
+
+                    span {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 13px;
+                        font-weight: bold;
+                        color: $highLight_0;
+                        padding: 0 0 2px;
+                    }
+
+                    &.scale {
+                        &::after {
+                            display: block;
+                        }
+
+                        animation: scale 0.6s linear 0s;
+                    }
+
+                    &::after {
+                        content: "";
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50px;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: radial-gradient(50% 50% at 50% 50%, #ffffff00 0%, #ffffff1a 100%);
+                        display: none;
+                    }
+                }
+
+                &>.create-down_svg {
+                    width: 10px;
+                    height: 13px;
+                    margin: 0 5px 0 0;
+                    transform: rotate(180deg);
+                    opacity: 0.7;
+
+                    path {
+                        fill: $fontColor_1;
+                    }
+                }
+
+                .switch {
+                    width: 52px;
+                    height: 24px;
+                    border-radius: 50px;
+                    background: transparent;
+                    border: solid 2px $BG_04;
+                    position: relative;
+                    transition: 0.6s;
+
+                    .circle-bolt_svg {
+                        width: 16px;
+                        height: 16px;
+                        position: absolute;
+                        top: 50%;
+                        left: 2px;
+                        transform: translateY(-50%);
+                        transition: 0.6s;
+
+                        >path {
+                            fill: $fontColor_1;
+                        }
+                    }
+                }
+            }
+
+            &.display {
+                background: linear-gradient(to right, $highLight_0 0%, #7026F5 100%);
+
+                .switch {
+                    background: $BG_04;
+                    border-radius: 50px;
+                    transition: 0.6s;
+
+                    .circle-bolt_svg {
+                        transition: 0.6s;
+                        transform: translateX(29px) translateY(-50%);
+
+                        >path {
+                            fill: #7026f5;
+                        }
+                    }
+                }
+            }
+        }
+
+        .content {
+            width: 100%;
+            height: auto;
+            background: $BG_03;
+
+            .tipsBox {
+                width: 100%;
+
+                .btn-tips {
+                    width: 240px;
+                    height: 42px;
+                    @include btnStyle_1;
+                    margin: 0 auto;
+                }
+
+                p {
+                    font-weight: bold;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 15px 0;
+
+                    &.tips {
+                        color: $fontColor_1;
+                        font-size: 14px;
+
+                        >svg {
+                            width: 24px;
+                            height: 24px;
+                            margin-right: 5px;
+                        }
+                    }
+
+                    &.apply {
+                        color: $fontColor_3;
+                        font-size: 12px;
+                        flex-direction: column;
+
+                        span {
+                            color: $fontColor_3;
+                            text-decoration: underline;
+                            margin-top: 5px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+
+            .info {
+                font-size: 12px;
+                font-weight: bold;
+                line-height: 1.3;
+                letter-spacing: 1px;
+
+                >p {
+                    font-size: 12px;
+                    font-weight: bold;
+                    line-height: 1.5;
+                    letter-spacing: 1px;
+                    display: flex;
+                    align-items: center;
+                    margin-top: 2px;
+
+                    >svg {
+                        width: 16px;
+                        height: 16px;
+                        margin-right: 2px;
+                    }
+
+                    span {
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            &.plz-bet {
+                height: 113px;
+                display: flex;
+                align-items: center;
+                padding-left: 25px;
+                display: none;
+
+                &.display {
+                    animation: fadeToggle 0.1s linear;
+                    display: flex;
+                }
+
+                .emptyBetSlipIcon {
+                    width: 48px;
+                    height: 48px;
+                    flex-shrink: 0;
+                    margin-right: 15px;
+
+                    path {
+                        fill: $highLight_0
+                    }
+                }
+
+                >article {
+
+                    p {
+                        font-weight: bold;
+                        line-height: 2;
+
+                        &:first-child {
+                            color: $fontColor_1;
+                            font-size: 14px;
+                        }
+
+                        &:last-child {
+                            color: $fontColor_6;
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+
+            &.plzSignIn_bet {
+                height: auto;
+                padding: 20px 20px 5px;
+                display: none;
+
+                &.display {
+                    display: block;
+                    animation: fadeToggle 0.1s linear;
+                }
+
+                article {
+                    color: $fontColor_6;
+
+                    >p {
+                        color: $fontColor_6;
+
+                        >svg path {
+                            fill: $fontColor_6;
+                        }
+                    }
+                }
+            }
+
+            &.bet-select {
+
+                display: none;
+
+                &.display {
+                    display: block;
+                }
+
+                .odd-even {
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    background: #28292E;
+
+                    li {
+                        width: 100%;
+                        height: 40px;
+                        color: #ffffff80;
+                        font-size: 12px;
+                        font-weight: bold;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-bottom: 2px solid transparent;
+                        cursor: pointer;
+
+                        &:hover,
+                        &:active,
+                        &.active {
+                            border-bottom: 2px solid $highLight_0;
+                            color: $fontColor_1;
+                        }
+                    }
+                }
+
+                .content-group {
+                    padding: 0 10px 20px;
+
+                    >div {
+                        padding: 10px 0;
+
+                        .money-value {
+                            width: 104px;
+                            height: 24px;
+                            background: #151619;
+                            display: flex;
+                            align-items: center;
+                            border-radius: 5px;
+                            padding: 0 5px;
+                            display: none;
+
+                            &.display {
+                                display: flex;
+                            }
+
+                            >input[type=number] {
+                                width: 100%;
+                                height: 100%;
+                                background: none;
+                                border: none;
+                                color: $fontColor_1;
+                                text-align: right;
+
+                                &::-webkit-outer-spin-button,
+                                &::-webkit-inner-spin-button {
+                                    -webkit-appearance: none;
+                                    margin: 0;
+                                }
+
+                                &::placeholder {
+                                    text-align: end;
+                                    color: $fontColor_1;
+                                }
+                            }
+
+                            span {
+                                font-size: 12px;
+                                color: $fontColor_1;
+                                padding: 0 2px;
+                            }
+                        }
+
+                        &.detailBox {
+                            width: 100%;
+                            height: auto;
+
+                            ul {
+                                width: 100%;
+                                height: auto;
+
+                                li {
+                                    width: 100%;
+                                    height: 110px;
+                                    display: flex;
+                                    background: #28292E;
+                                    border-radius: 5px;
+                                    margin-bottom: 10px;
+
+                                    &:last-child {
+                                        margin: 0;
+                                    }
+
+                                    .closeBox {
+                                        width: 40px;
+                                        height: 100%;
+                                        background: #3e3f43;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        flex-shrink: 0;
+                                        border-radius: 5px 0 0 5px;
+                                        cursor: pointer;
+
+                                        .close_svg {
+                                            width: 18px;
+                                            height: 18px;
+
+                                            >path {
+                                                fill: $fontColor_1;
+                                            }
+                                        }
+                                    }
+
+                                    .detail {
+                                        width: 100%;
+                                        height: auto;
+                                        padding: 10px;
+
+                                        .team-name {
+                                            width: 100%;
+                                            height: auto;
+                                            display: flex;
+                                            align-items: center;
+                                            padding-bottom: 5px;
+
+                                            >svg {
+                                                width: 16px;
+                                                height: 16px;
+
+                                                >path {
+                                                    fill: $fontColor_1;
+                                                }
+                                            }
+
+                                            p {
+                                                font-size: 12px;
+                                                font-weight: bold;
+                                                color: $fontColor_1;
+                                            }
+                                        }
+
+                                        .versus {
+                                            width: 100%;
+                                            height: auto;
+
+                                            p {
+                                                font-size: 12px;
+                                                font-weight: bold;
+                                                line-height: 1.2;
+                                                color: #ffffff8d;
+                                            }
+                                        }
+
+                                        .value {
+                                            width: 100%;
+                                            height: 24px;
+                                            display: flex;
+                                            justify-content: space-between;
+                                            align-items: flex-end;
+
+                                            p {
+                                                font-size: 18px;
+                                                font-weight: bold;
+                                                color: $fontColor_1;
+                                                position: relative;
+
+                                                span {
+                                                    border-style: solid;
+                                                    border-width: 5px 5px 0px 5px;
+                                                    border-color: red transparent;
+                                                    position: absolute;
+                                                    top: 55%;
+                                                    right: -15px;
+                                                    transform: translateY(-50%);
+                                                }
+                                            }
+
+                                            >button {
+                                                width: 136px;
+                                                height: 24px;
+                                                background: $highLight_0;
+                                                border: none;
+                                                border-radius: 30px;
+                                                color: $fontColor_1;
+                                                font-size: 12px;
+                                                font-weight: bold;
+                                                display: none;
+
+                                                &.display {
+                                                    display: block;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        &.money-group {
+                            width: 100%;
+                            height: auto;
+
+
+                            >button {
+                                width: 70px;
+                                height: 32px;
+                                border-radius: 50px;
+                                background: #28292e;
+                                color: $fontColor_1;
+                                font-weight: bold;
+
+                                &:hover,
+                                &:active,
+                                &.active {
+                                    background: $highLight_0;
+                                }
+                            }
+                        }
+
+                        &.total-box {
+                            width: 100%;
+                            height: auto;
+
+                            >div {
+                                display: flex;
+                                justify-content: space-between;
+                                margin-bottom: 5px;
+
+                                &:last-child {
+                                    margin: 0;
+                                }
+
+                                &.one {
+                                    display: none;
+
+                                    &.display {
+                                        display: flex;
+                                    }
+                                }
+
+                                &.one,
+                                &.two {
+                                    p {
+                                        color: #ffffff99;
+                                    }
+                                }
+
+                                p {
+                                    font-size: 12px;
+                                    font-weight: bold;
+                                    color: $fontColor_1;
+                                }
+                            }
+                        }
+
+                        &.tipsBox {
+                            padding: 0;
+
+                            .btnBox {
+
+                                .btn-tips {
+                                    width: 272px;
+                                    @include btnStyle_1;
+                                    margin-bottom: 15px;
+
+                                    &:last-child {
+                                        margin-bottom: 0;
+                                    }
+
+                                    &:first-child {
+                                        background: #ffffff33;
+                                    }
+
+                                }
+                            }
+
+                            .tips {
+                                color: $fontColor_1;
+                            }
+
+                            .apply {
+                                color: #878787;
+
+                                span {
+                                    color: $fontColor_3;
+                                }
+                            }
+                        }
+
+                        &.operate {
+                            width: 100%;
+                            height: auto;
+                            display: flex;
+                            padding: 0 10px;
+
+                            >div {
+                                width: auto;
+                                height: auto;
+                                display: flex;
+                                align-items: center;
+                                margin-right: 20px;
+
+                                &:first-child {
+                                    flex-shrink: 0;
+                                }
+
+                                &:last-child {
+                                    margin: 0;
+                                }
+
+                                >p {
+                                    color: $fontColor_1;
+                                    opacity: 0.4;
+                                    font-size: 12px;
+                                    font-weight: bold;
+                                    transition: opacity 0.3s;
+                                }
+
+                                >svg {
+                                    width: 16px;
+                                    height: 16px;
+                                    margin-right: 5px;
+
+                                    path {
+                                        fill: #878787;
+                                    }
+                                }
+
+                                &:hover,
+                                &:active,
+                                &.active {
+                                    p {
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.options {
+                            width: 100%;
+                            height: auto;
+                            padding: 10px 15px;
+                            display: none;
+
+                            .option_title {
+                                width: 100%;
+                                height: auto;
+                                display: flex;
+                                align-items: center;
+
+
+                                >p {
+                                    font-size: 14px;
+                                    font-weight: bold;
+                                    color: $fontColor_1;
+                                    margin-right: 5px;
+                                }
+
+                                .circle-box {
+                                    width: 16px;
+                                    height: 16px;
+                                    background: #3e3f43;
+                                    border-radius: 50px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+
+                                    >svg {
+                                        width: 16px;
+                                        height: 16px;
+
+                                        >path {
+                                            fill: $fontColor_1;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .option_chk {
+                                width: 100%;
+                                height: auto;
+                                display: grid;
+                                grid-template-columns: repeat(2, 1fr);
+                                gap: 15px 0;
+                                padding-top: 15px;
+
+                                li {
+                                    width: 110px;
+                                    height: auto;
+                                    font-size: 12px;
+                                    font-weight: bold;
+                                    color: $fontColor_1;
+                                    display: flex;
+                                    align-items: center;
+                                    cursor: pointer;
+
+                                    >i {
+                                        width: 16px;
+                                        height: 16px;
+                                        border-radius: 50px;
+                                        border: solid 2px #878787;
+                                        flex-shrink: 0;
+                                        margin-right: 10px;
+                                    }
+
+                                    &:hover,
+                                    &:active,
+                                    &.active {
+                                        >i {
+                                            background: $highLight_0;
+                                            border: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .rejuct {
+                        font-size: 12px;
+                        font-weight: bold;
+                        color: $fontColor_1;
+                        display: flex;
+                        align-items: center;
+                        display: none;
+
+                        >svg {
+                            width: 16px;
+                            height: 16px;
+                            margin-right: 5px;
+
+                            >path {
+                                fill: #f5a623;
+                            }
+                        }
+                    }
+
+                    &.even {
+                        .detailBox {
+                            ul {
+                                border: solid 2px #EDB31D;
+                                border-radius: 5px;
+
+                                li {
+                                    margin-bottom: 2px;
+
+                                    .detail {
+                                        .value {
+                                            label {
+                                                &.display {
+                                                    display: none;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .rejuct {
+                            display: flex;
+                        }
+
+                        .money-group {
+                            display: flex;
+                            align-items: center;
+
+                            .money-value {
+                                display: flex;
+                                border: solid 1px #28292E;
+                                margin-right: 5px;
+                            }
+
+                            >button {
+                                width: 60px;
+
+                                &:last-child {
+                                    display: none;
+                                }
+                            }
+                        }
+
+                        .total-box {
+                            .one {
+                                display: flex;
+                            }
+                        }
+                    }
+
+
+                    &.system {
+                        .detailBox {
+                            ul {
+                                border: solid 2px #EDB31D;
+                                border-radius: 5px;
+
+                                li {
+                                    margin-bottom: 2px;
+
+                                    .detail {
+                                        .value {
+                                            label {
+                                                &.display {
+                                                    display: none;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .rejuct {
+                            display: flex;
+                        }
+
+                        .money-group {
+                            display: flex;
+                            align-items: center;
+
+                            .money-value {
+                                display: flex;
+                                border: solid 1px #28292E;
+                                margin-right: 5px;
+                            }
+
+                            >button {
+                                width: 60px;
+
+                                &:last-child {
+                                    display: none;
+                                }
+                            }
+                        }
+
+                        .options {
+                            display: grid;
+                        }
+                    }
+                }
+            }
+
+            &.inner-bet {
+                display: none;
+                height: auto;
+                padding: 20px 20px 5px;
+
+                &.display {
+                    display: block;
+                }
+
+                .info {
+                    color: #ffffffb3;
+
+                    >p {
+                        color: #ffffffb3;
+
+                        >svg path {
+                            fill: #ffffffb3;
+                        }
+                    }
+                }
+
+                .money-box {
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 20px;
+
+                    >button {
+                        width: 64px;
+                        height: 32px;
+                        background: #28292E;
+                        color: $fontColor_1;
+                        border-radius: 50px;
+                        margin-right: 5px;
+
+                        &:last-child {
+                            margin: 0;
+                        }
+
+                        &:hover,
+                        &:active,
+                        &.active {
+                            background: #7026f5;
+                        }
+                    }
+                }
+
+                >label {
+                    width: 100%;
+                    height: 32px;
+                    background: #151619;
+                    border: solid 1px #28292E;
+                    border-radius: 5px;
+                    display: flex;
+                    align-items: center;
+                    margin-top: 20px;
+                    padding: 0 3px;
+
+                    >input {
+                        width: 100%;
+                        height: 100%;
+                        background: none;
+                        border: none;
+                        text-align: right;
+                        color: $fontColor_1;
+                        padding: 0 2px;
+
+                        &::placeholder {
+                            font-size: 12px;
+                            font-weight: bold;
+                        }
+                    }
+
+                    span {
+                        font-size: 12px;
+                        font-weight: bold;
+                        color: $fontColor_1;
+                        padding: 0 5px;
+                    }
+
+                    >button {
+                        width: 91px;
+                        height: calc(100% - 4px);
+                        background: $highLight_0;
+                        color: $fontColor_1;
+                        border-radius: 5px;
+                        font-size: 12px;
+                        font-weight: bold;
+                        letter-spacing: -1px;
+                        flex-shrink: 0;
+
+                        &:disabled {
+                            opacity: 0.5;
+                            pointer-events: none;
+                        }
+                    }
+
+                    .chk_svg {
+                        width: 16px;
+                        height: 16px;
+                        padding: 0 5px;
+
+                        >path {
+                            fill: #87c735
+                        }
+                    }
+                }
+
+                .warn {
+                    width: auto;
+                    height: auto;
+                    max-width: 170px;
+                    display: flex;
+                    align-items: center;
+                    padding-top: 10px;
+
+                    >svg {
+                        width: 16px;
+                        height: 16px;
+                        flex-shrink: 0;
+                        margin-right: 6px;
+                    }
+
+                    .warn_svg {
+                        >path {
+                            fill: #f5a623;
+                        }
+                    }
+
+                    .bolt_svg {
+                        >path {
+                            fill: #7026F5;
+                        }
+                    }
+
+                    >p {
+                        font-size: 12px;
+                        font-weight: bold;
+                        color: $fontColor_1;
+                    }
+                }
+            }
+        }
+    }
+}
